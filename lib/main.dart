@@ -28,10 +28,15 @@ class _RandomWordsState extends State<RandomWords> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Startup Name Generator'),
+        actions: [
+          IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
+        ],
       ),
       body: _buildSuggestions(),
     );
   }
+
+  void _pushSaved() {}
 
   Widget _buildRow(WordPair pair) {
     final alreadySaved = _saved.contains(pair);
