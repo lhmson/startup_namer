@@ -38,26 +38,28 @@ class _RandomWordsState extends State<RandomWords> {
 
   void _pushSaved() {
     Navigator.of(context).push(
-      builder: (BuildContext context) {
-        final tiles = _saved.map(
-          (WordPair pair) {
-            return ListTile(
-              title: Text(
-                pair.asPascalCase,
-                style: _biggerFont,
-              ),
-            );
-          },
-        );
-        final divided = tiles.isNotEmpty ? ListTile.divideTiles(context: context, tiles: tiles).toList() : <Widget>[];
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) {
+          final tiles = _saved.map(
+            (WordPair pair) {
+              return ListTile(
+                title: Text(
+                  pair.asPascalCase,
+                  style: _biggerFont,
+                ),
+              );
+            },
+          );
+          final divided = tiles.isNotEmpty ? ListTile.divideTiles(context: context, tiles: tiles).toList() : <Widget>[];
 
-        return Scaffold(
-          appBar: AppBar(
-            title: Text('Saved Suggestions'),
-          ),
-          body: ListView(children: divided),
-        );
-      },
+          return Scaffold(
+            appBar: AppBar(
+              title: Text('Saved Suggestions'),
+            ),
+            body: ListView(children: divided),
+          );
+        },
+      ),
     );
   }
 
